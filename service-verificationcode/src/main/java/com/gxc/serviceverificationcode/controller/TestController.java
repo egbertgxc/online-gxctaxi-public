@@ -14,5 +14,9 @@ public class TestController {
     public String Test1(){
         return "service-verificationcode";
     }
+    @GetMapping("/test2")
+    public String Test2(){
+        return "service-verificationcode";
+    }
 
 }
