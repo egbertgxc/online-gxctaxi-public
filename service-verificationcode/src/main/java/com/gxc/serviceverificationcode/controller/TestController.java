@@ -12,6 +12,6 @@ public class TestController {
     }
     @GetMapping("/testw")
     public String Testw(){
-        return "service-verificationcodggggggggggggg";
+        return "service-verificationcodggggggggggggggggggggggggg";
     }
 }
