@@ -10,5 +10,8 @@ public class TestController {
     public String Test(){
         return "service-verificationcode";
     }
-
+    @GetMapping("/testw")
+    public String Testw(){
+        return "service-verificationcode";
+    }
 }
