@@ -1,5 +1,6 @@
 package com.gxc.apipassenger.controller;
 
+import com.gax.internalcommon.dto.ResponseResult;
 import com.gxc.apipassenger.request.VerificationDTO;
 import com.gxc.apipassenger.service.VerificationCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,8 @@ public class VerificationCodeController {
     private VerificationCodeService verificationCodeService;
 
     @GetMapping("/verification-code")
-    public String verificationCode(@RequestBody VerificationDTO verificationDTO){
+    public ResponseResult verificationCode(@RequestBody VerificationDTO verificationDTO){
         String passengerPhone = verificationDTO.getPassengerPhone();
-        System.out.println("接受到手机号参数"+passengerPhone);
-
         return verificationCodeService.generatorCode(passengerPhone);
     }
 }
