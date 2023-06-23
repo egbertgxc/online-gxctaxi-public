@@ -1,10 +1,13 @@
 package com.gxc.apipassenger.service;
 
+import com.gax.internalcommon.CommonStatusEnum;
 import com.gax.internalcommon.dto.ResponseResult;
 import com.gax.internalcommon.responese.NumberCodeResponse;
 import com.gax.internalcommon.responese.TokenResponse;
 import com.gxc.apipassenger.remoto.ServiceVerificationClient;
+import io.netty.util.internal.StringUtil;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -64,6 +67,12 @@ public class VerificationCodeService {
         String codeRedis = stringRedisTemplate.opsForValue().get(key);
         System.out.println("redis中的value:"+codeRedis);
         //校验验证码
+        if (StringUtils.isBlank(codeRedis)) {
+            return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode(),CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
+        }
+        if (!verificationCode.trim().equals(codeRedis.trim())) {
+            return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode(),CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
+        }
         System.out.println("校验验证码");
         //判断原来是否有用户,并进行对应的处理
         System.out.println("判断原来是否有有用户,并进行对应的处理");
