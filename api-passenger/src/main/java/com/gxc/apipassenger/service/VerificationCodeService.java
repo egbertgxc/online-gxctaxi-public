@@ -2,8 +2,10 @@ package com.gxc.apipassenger.service;
 
 import com.gax.internalcommon.CommonStatusEnum;
 import com.gax.internalcommon.dto.ResponseResult;
+import com.gax.internalcommon.request.VerificationDTO;
 import com.gax.internalcommon.responese.NumberCodeResponse;
 import com.gax.internalcommon.responese.TokenResponse;
+import com.gxc.apipassenger.remoto.ServicePassengerUserClient;
 import com.gxc.apipassenger.remoto.ServiceVerificationClient;
 import io.netty.util.internal.StringUtil;
 import net.sf.json.JSONObject;
@@ -25,6 +27,9 @@ public class VerificationCodeService {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private ServicePassengerUserClient servicePassengerUserClient;
 
     /**
      * 生成验证码
@@ -75,6 +80,9 @@ public class VerificationCodeService {
         }
         //判断原来是否有用户,并进行对应的处理
         System.out.println("判断原来是否有有用户,并进行对应的处理");
+        VerificationDTO verificationDTO = new VerificationDTO();
+        verificationDTO.setPassengerPhone(passengerPhone);
+        servicePassengerUserClient.loginOrRegister(verificationDTO);
         //派发令牌
         System.out.println("派发令牌");
 
