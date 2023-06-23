@@ -73,7 +73,6 @@ public class VerificationCodeService {
         if (!verificationCode.trim().equals(codeRedis.trim())) {
             return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode(),CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
         }
-        System.out.println("校验验证码");
         //判断原来是否有用户,并进行对应的处理
         System.out.println("判断原来是否有有用户,并进行对应的处理");
         //派发令牌
