@@ -1,14 +1,14 @@
 package com.gxc.apipassenger.service;
 
-import com.gax.internalcommon.CommonStatusEnum;
+import com.gax.internalcommon.constent.CommonStatusEnum;
+import com.gax.internalcommon.constent.IdentityConstant;
 import com.gax.internalcommon.dto.ResponseResult;
 import com.gax.internalcommon.request.VerificationDTO;
 import com.gax.internalcommon.responese.NumberCodeResponse;
 import com.gax.internalcommon.responese.TokenResponse;
+import com.gax.internalcommon.util.JwtUtils;
 import com.gxc.apipassenger.remoto.ServicePassengerUserClient;
 import com.gxc.apipassenger.remoto.ServiceVerificationClient;
-import io.netty.util.internal.StringUtil;
-import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -85,10 +85,12 @@ public class VerificationCodeService {
         servicePassengerUserClient.loginOrRegister(verificationDTO);
         //派发令牌
         System.out.println("派发令牌");
+        //不应该用魔法值,用常量
+        String token = JwtUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
 
         //响应
         TokenResponse tokenResponse = new TokenResponse();
-        tokenResponse.setToken("token value");
+        tokenResponse.setToken(token);
         return ResponseResult.success(tokenResponse);
     }
 }

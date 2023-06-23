@@ -1,4 +1,4 @@
-package com.gax.internalcommon;
+package com.gax.internalcommon.constent;
 
 import lombok.Data;
 import lombok.Getter;

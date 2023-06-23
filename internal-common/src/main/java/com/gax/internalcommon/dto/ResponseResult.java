@@ -1,10 +1,8 @@
 package com.gax.internalcommon.dto;
 
-import com.gax.internalcommon.CommonStatusEnum;
+import com.gax.internalcommon.constent.CommonStatusEnum;
 import lombok.Data;
 import lombok.experimental.Accessors;
-
-import java.util.Date;
 
 @Data
 @Accessors(chain = true)
