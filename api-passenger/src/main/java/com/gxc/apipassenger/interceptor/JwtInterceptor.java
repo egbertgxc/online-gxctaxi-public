@@ -3,9 +3,16 @@ package com.gxc.apipassenger.interceptor;
 import com.auth0.jwt.exceptions.AlgorithmMismatchException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.gax.internalcommon.constent.TokenConstants;
 import com.gax.internalcommon.dto.ResponseResult;
+import com.gax.internalcommon.dto.TokenResult;
 import com.gax.internalcommon.util.JwtUtils;
+import com.gax.internalcommon.util.RedisPrefixUtils;
+import io.netty.util.internal.StringUtil;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,14 +22,18 @@ import java.security.SignatureException;
 
 public class JwtInterceptor implements HandlerInterceptor {
 
-
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+
         boolean result = true;
         String resutltString = "";
         String token = request.getHeader("Authorization");
+        TokenResult tokenResult = null;
         try {
-            JwtUtils.parseToken(token);
+            tokenResult = JwtUtils.parseToken(token);
         }catch (SignatureVerificationException e){
             resutltString = "token sing error";
             result = false;
@@ -35,6 +46,28 @@ public class JwtInterceptor implements HandlerInterceptor {
         }catch (Exception e){
             resutltString = "token invalid";
             result = false;
+        }
+
+        if (tokenResult ==null) {
+            resutltString= "token invalid";
+            result = false;
+        }else {
+
+            String phone = tokenResult.getPhone();
+            String identity = tokenResult.getIdentity();
+            String tokenkey = RedisPrefixUtils.generatorTokenKey(phone,identity, TokenConstants.ACCESS_TOKEN_TYPE);
+            //从redis中取出token
+            String s = stringRedisTemplate.opsForValue().get(tokenkey);
+            if (StringUtils.isBlank(tokenkey)) {
+                resutltString= "token invalid";
+                result = false;
+            }else {
+                if (!tokenkey.trim().equals(tokenkey.trim())) {
+                    resutltString= "token invalid";
+                    result = false;
+                }
+            }
+
         }
 
         if (!result) {

@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.gax.internalcommon.constent.TokenConstants;
 import com.gax.internalcommon.dto.TokenResult;
 
 import java.util.Calendar;
@@ -18,12 +19,14 @@ public class JwtUtils {
     private static final String JWT_KEY_PHONE = "phone";
     // 乘客是1,司机是2
     private static final String JWT_KEY_IDENTITY = "identity";
+    private static final String JWT_TOKEN_TYPE = "tokenType";
 
     // 生成token
-    public static String generatorToken(String passengerPhone,String identity) {
+    public static String generatorToken(String passengerPhone,String identity,String tokenType) {
         Map<String, String> map = new HashMap<>();
         map.put(JWT_KEY_PHONE,passengerPhone);
         map.put(JWT_KEY_IDENTITY,identity);
+        map.put(JWT_TOKEN_TYPE,tokenType);
         // token过期时间
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, 1);
@@ -45,8 +48,8 @@ public class JwtUtils {
     // 解析token
     public static TokenResult parseToken(String token){
         DecodedJWT verify = JWT.require(Algorithm.HMAC256(SIGN)).build().verify(token);
-        String phone = verify.getClaim(JWT_KEY_PHONE).toString();
-        String identity = verify.getClaim(JWT_KEY_IDENTITY).toString();
+        String phone = verify.getClaim(JWT_KEY_PHONE).asString();
+        String identity = verify.getClaim(JWT_KEY_IDENTITY).asString();
         TokenResult tokenResult = new TokenResult();
         tokenResult.setPhone(phone);
         tokenResult.setIdentity(identity);
@@ -55,7 +58,7 @@ public class JwtUtils {
 
 
     public static void main(String[] args) {
-        String s = generatorToken("135687554231","1");
+        String s = generatorToken("135687554231","1", TokenConstants.ACCESS_TOKEN_TYPE);
         System.out.println("生成的token:"+s);
         TokenResult tokenResult = parseToken(s);
         System.out.println("手机号"+tokenResult.getPhone()+"身份"+tokenResult.getIdentity());
