@@ -23,6 +23,7 @@ public class JwtUtils {
     // 乘客是1,司机是2
     private static final String JWT_KEY_IDENTITY = "identity";
     private static final String JWT_TOKEN_TYPE = "tokenType";
+    private static final String JWT_TOKEN_TIME = "tokenTime";
 
     // 生成token
     public static String generatorToken(String passengerPhone,String identity,String tokenType) {
@@ -31,9 +32,8 @@ public class JwtUtils {
         map.put(JWT_KEY_IDENTITY,identity);
         map.put(JWT_TOKEN_TYPE,tokenType);
         // token过期时间
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DATE, 1);
-        Date date = calendar.getTime();
+        //防止每次都生成一样
+        map.put(JWT_TOKEN_TIME,Calendar.getInstance().getTime().toString());
 
         JWTCreator.Builder builder = JWT.create();
         map.forEach(

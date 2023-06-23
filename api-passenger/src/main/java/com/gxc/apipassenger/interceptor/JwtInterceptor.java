@@ -34,8 +34,8 @@ public class JwtInterceptor implements HandlerInterceptor {
         //解析token
         TokenResult tokenResult = JwtUtils.checkToken(token);
 
-        if (tokenResult ==null) {
-            resutltString= "token invalid";
+        if (tokenResult == null) {
+            resutltString= "Access token invalid";
             result = false;
         }else {
             //拼接key
