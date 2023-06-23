@@ -35,10 +35,19 @@ public class VerificationCodeService {
         int numberCode = numberCodeResponse.getData().getNumberCode();
         //存入redis
         //key,value,过期时间
-        String key=verificationCodePrefix+PassengerPhone;
+        String key = generatorKeyByPhone(PassengerPhone);
         stringRedisTemplate.opsForValue().set(key,numberCode+"",2, TimeUnit.MINUTES);
         //通过短效服务商,将对应的验证码发送到手机山,阿里短信,腾讯短信,华信,容量
         return ResponseResult.success("");
+    }
+
+    /**
+     * 根据手机号生成key
+     * @param PassengerPhone
+     * @return
+     */
+    private String generatorKeyByPhone(String PassengerPhone) {
+        return verificationCodePrefix+ PassengerPhone;
     }
 
     /**
@@ -49,8 +58,11 @@ public class VerificationCodeService {
      */
     public ResponseResult checkCode(String passengerPhone, String verificationCode){
         //根据手机号,去redis读取验证码
-        System.out.println("根据手机号,去redis读取验证码");
-
+        //生成key
+        String key = generatorKeyByPhone(passengerPhone);
+        // 根据key获取验证码
+        String codeRedis = stringRedisTemplate.opsForValue().get(key);
+        System.out.println("redis中的value:"+codeRedis);
         //校验验证码
         System.out.println("校验验证码");
         //判断原来是否有用户,并进行对应的处理
