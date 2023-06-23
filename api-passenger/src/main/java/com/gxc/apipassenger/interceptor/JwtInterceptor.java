@@ -31,41 +31,22 @@ public class JwtInterceptor implements HandlerInterceptor {
         boolean result = true;
         String resutltString = "";
         String token = request.getHeader("Authorization");
-        TokenResult tokenResult = null;
-        try {
-            tokenResult = JwtUtils.parseToken(token);
-        }catch (SignatureVerificationException e){
-            resutltString = "token sing error";
-            result = false;
-        }catch (TokenExpiredException e){
-            resutltString = "token time out";
-            result = false;
-        }catch (AlgorithmMismatchException e){
-            resutltString = "token AlgorithmMismatchException";
-            result = false;
-        }catch (Exception e){
-            resutltString = "token invalid";
-            result = false;
-        }
+        //解析token
+        TokenResult tokenResult = JwtUtils.checkToken(token);
 
         if (tokenResult ==null) {
             resutltString= "token invalid";
             result = false;
         }else {
-
+            //拼接key
             String phone = tokenResult.getPhone();
             String identity = tokenResult.getIdentity();
             String tokenkey = RedisPrefixUtils.generatorTokenKey(phone,identity, TokenConstants.ACCESS_TOKEN_TYPE);
             //从redis中取出token
-            String s = stringRedisTemplate.opsForValue().get(tokenkey);
-            if (StringUtils.isBlank(tokenkey)) {
+            String tokenKeyRedis = stringRedisTemplate.opsForValue().get(tokenkey);
+            if (StringUtils.isBlank(tokenkey) || !tokenkey.trim().equals(tokenKeyRedis.trim())) {
                 resutltString= "token invalid";
                 result = false;
-            }else {
-                if (!tokenkey.trim().equals(tokenkey.trim())) {
-                    resutltString= "token invalid";
-                    result = false;
-                }
             }
 
         }

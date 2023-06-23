@@ -3,6 +3,9 @@ package com.gax.internalcommon.util;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.AlgorithmMismatchException;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.gax.internalcommon.constent.TokenConstants;
@@ -62,5 +65,20 @@ public class JwtUtils {
         System.out.println("生成的token:"+s);
         TokenResult tokenResult = parseToken(s);
         System.out.println("手机号"+tokenResult.getPhone()+"身份"+tokenResult.getIdentity());
+    }
+
+    /**
+     * 校验token 主要判断token是否异常
+     * @param token
+     * @return
+     */
+    public static TokenResult checkToken(String token){
+        TokenResult tokenResult = null;
+        try {
+            tokenResult = JwtUtils.parseToken(token);
+        }catch (Exception e){
+        }
+        return tokenResult;
+
     }
 }
