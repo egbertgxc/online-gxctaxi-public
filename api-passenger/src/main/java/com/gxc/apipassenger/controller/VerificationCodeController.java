@@ -1,7 +1,7 @@
 package com.gxc.apipassenger.controller;
 
 import com.gax.internalcommon.dto.ResponseResult;
-import com.gxc.apipassenger.request.VerificationDTO;
+import com.gax.internalcommon.request.VerificationDTO;
 import com.gxc.apipassenger.service.VerificationCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

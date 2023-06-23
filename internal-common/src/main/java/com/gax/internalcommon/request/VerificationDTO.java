@@ -1,7 +1,6 @@
-package com.gxc.apipassenger.request;
+package com.gax.internalcommon.request;
 
 import lombok.Data;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Data
 public class VerificationDTO {
