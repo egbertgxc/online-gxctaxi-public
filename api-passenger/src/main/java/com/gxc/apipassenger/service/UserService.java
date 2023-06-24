@@ -27,6 +27,6 @@ public class UserService {
         //根据手机号查询用户信息
         ResponseResult<PassengerUser> userByPhone = servicePassengerUserClient.getUserByPhone(phone);
 
-        return ResponseResult.success(userByPhone);
+        return ResponseResult.success(userByPhone.getData());
     }
 }
