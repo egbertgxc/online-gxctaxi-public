@@ -3,12 +3,11 @@ package com.gxc.servicepassengeruser.controller;
 import com.gax.internalcommon.dto.ResponseResult;
 import com.gax.internalcommon.request.VerificationDTO;
 import com.gxc.servicepassengeruser.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 public class UserController {
 
@@ -18,12 +17,14 @@ public class UserController {
     public ResponseResult loginOrRegister(@RequestBody VerificationDTO verificationDTO){
         String passengerPhone = verificationDTO.getPassengerPhone();
         System.out.println("手机号"+passengerPhone);
+        log.info("注册用户信息");
         return userService.loginOrRegister(passengerPhone);
     }
 
-    @GetMapping("/user/")
-    public ResponseResult getUser(@RequestBody VerificationDTO verificationDTO){
-        String passengerPhone = verificationDTO.getPassengerPhone();
+    @GetMapping("/user/{phone}")
+    public ResponseResult getUser(@PathVariable("phone") String passengerPhone){
+//        String passengerPhone = verificationDTO.getPassengerPhone();
+        log.info("用户信息");
         return userService.getUserByPhone(passengerPhone);
     }
 }
