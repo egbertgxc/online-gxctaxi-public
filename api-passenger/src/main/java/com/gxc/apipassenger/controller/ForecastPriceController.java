@@ -23,6 +23,6 @@ public class ForecastPriceController {
         String destLongitude = forecastPriceDTO.getDestLongitude();
         String destLatitude = forecastPriceDTO.getDestLatitude();
 
-        return forecastPriceService.forecastPrice(depLongitude, depLatitude, destLongitude, destLatitude);
+        return forecastPriceService.forecastPrice(forecastPriceDTO);
     }
 }
