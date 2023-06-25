@@ -1,8 +1,7 @@
 package com.gxc.servicemap.remote;
 
-import com.gax.internalcommon.constent.AmapConfigConstans;
-import com.gax.internalcommon.dto.ResponseResult;
-import com.gax.internalcommon.responese.DirectionResponse;
+import com.gxc.internalcommon.constant.AmapConfigConstants;
+import com.gxc.internalcommon.responese.DirectionResponse;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -29,7 +28,7 @@ public class MapDirectionClient {
          */
         StringBuilder urlBuild = new StringBuilder();
 
-        urlBuild.append(AmapConfigConstans.DIRECTION_URL);
+        urlBuild.append(AmapConfigConstants.DIRECTION_URL);
         urlBuild.append("?origin=" + depLongitude + "," + depLatitude + "&destination=" + destLongitude + "," + destLatitude);
         urlBuild.append("&extensions=base&output=json");
         urlBuild.append("&key=" + amapKey);
@@ -52,19 +51,19 @@ public class MapDirectionClient {
         try {
             //最外层
             JSONObject result = JSONObject.fromObject(directionString);
-            if (result.has(AmapConfigConstans.STATUS)) {
-                int status = result.getInt(AmapConfigConstans.STATUS);
-                if (status == 1 && result.has(AmapConfigConstans.ROUTE)) {
-                    JSONObject routeObject = result.getJSONObject(AmapConfigConstans.ROUTE);
-                    JSONArray pathsArray = routeObject.getJSONArray(AmapConfigConstans.PATHS);
+            if (result.has(AmapConfigConstants.STATUS)) {
+                int status = result.getInt(AmapConfigConstants.STATUS);
+                if (status == 1 && result.has(AmapConfigConstants.ROUTE)) {
+                    JSONObject routeObject = result.getJSONObject(AmapConfigConstants.ROUTE);
+                    JSONArray pathsArray = routeObject.getJSONArray(AmapConfigConstants.PATHS);
                     JSONObject pathObject = pathsArray.getJSONObject(0);
                     directionResponse = new DirectionResponse();
-                    if (pathObject.has(AmapConfigConstans.DISTANCE)) {
-                        int distance = pathObject.getInt(AmapConfigConstans.DISTANCE);
+                    if (pathObject.has(AmapConfigConstants.DISTANCE)) {
+                        int distance = pathObject.getInt(AmapConfigConstants.DISTANCE);
                         directionResponse.setDistance(distance);
                     }
-                    if (pathObject.has(AmapConfigConstans.DURATION)) {
-                        int duration = pathObject.getInt(AmapConfigConstans.DURATION);
+                    if (pathObject.has(AmapConfigConstants.DURATION)) {
+                        int duration = pathObject.getInt(AmapConfigConstants.DURATION);
                         directionResponse.setDuration(duration);
                     }
                 }

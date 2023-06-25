@@ -1,7 +1,7 @@
 package com.gxc.serviceprice.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gax.internalcommon.dto.PriceRule;
+import com.gxc.internalcommon.dto.PriceRule;
 import org.springframework.stereotype.Repository;
 
 @Repository

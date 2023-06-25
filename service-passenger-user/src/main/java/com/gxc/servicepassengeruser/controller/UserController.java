@@ -1,7 +1,7 @@
 package com.gxc.servicepassengeruser.controller;
 
-import com.gax.internalcommon.dto.ResponseResult;
-import com.gax.internalcommon.request.VerificationDTO;
+import com.gxc.internalcommon.dto.ResponseResult;
+import com.gxc.internalcommon.request.VerificationDTO;
 import com.gxc.servicepassengeruser.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

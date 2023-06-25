@@ -1,10 +1,9 @@
 package com.gxc.apipassenger.service;
 
-import com.gax.internalcommon.dto.PassengerUser;
-import com.gax.internalcommon.dto.ResponseResult;
-import com.gax.internalcommon.dto.TokenResult;
-import com.gax.internalcommon.request.VerificationDTO;
-import com.gax.internalcommon.util.JwtUtils;
+import com.gxc.internalcommon.dto.PassengerUser;
+import com.gxc.internalcommon.dto.ResponseResult;
+import com.gxc.internalcommon.dto.TokenResult;
+import com.gxc.internalcommon.util.JwtUtils;
 import com.gxc.apipassenger.remoto.ServicePassengerUserClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

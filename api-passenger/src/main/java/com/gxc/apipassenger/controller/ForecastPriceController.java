@@ -1,7 +1,7 @@
 package com.gxc.apipassenger.controller;
 
-import com.gax.internalcommon.dto.ResponseResult;
-import com.gax.internalcommon.request.ForecastPriceDTO;
+import com.gxc.internalcommon.dto.ResponseResult;
+import com.gxc.internalcommon.request.ForecastPriceDTO;
 import com.gxc.apipassenger.service.ForecastPriceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

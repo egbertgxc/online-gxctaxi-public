@@ -1,12 +1,12 @@
 package com.gxc.serviceprice.service;
 
-import com.gax.internalcommon.constent.CommonStatusEnum;
-import com.gax.internalcommon.dto.PriceRule;
-import com.gax.internalcommon.dto.ResponseResult;
-import com.gax.internalcommon.request.ForecastPriceDTO;
-import com.gax.internalcommon.responese.DirectionResponse;
-import com.gax.internalcommon.responese.ForecastPriceResponse;
-import com.gax.internalcommon.util.BigDecimalUtils;
+import com.gxc.internalcommon.constant.CommonStatusEnum;
+import com.gxc.internalcommon.dto.PriceRule;
+import com.gxc.internalcommon.dto.ResponseResult;
+import com.gxc.internalcommon.request.ForecastPriceDTO;
+import com.gxc.internalcommon.responese.DirectionResponse;
+import com.gxc.internalcommon.responese.ForecastPriceResponse;
+import com.gxc.internalcommon.util.BigDecimalUtils;
 import com.gxc.serviceprice.mapper.PriceRuleMapper;
 import com.gxc.serviceprice.remote.ServiceMapClient;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
 package com.gxc.serviceverificationcode.controller;
 
-import com.gax.internalcommon.dto.ResponseResult;
-import com.gax.internalcommon.responese.NumberCodeResponse;
+import com.gxc.internalcommon.dto.ResponseResult;
+import com.gxc.internalcommon.responese.NumberCodeResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;

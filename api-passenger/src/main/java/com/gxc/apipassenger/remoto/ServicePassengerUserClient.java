@@ -1,9 +1,8 @@
 package com.gxc.apipassenger.remoto;
 
-import com.gax.internalcommon.dto.PassengerUser;
-import com.gax.internalcommon.dto.ResponseResult;
-import com.gax.internalcommon.request.VerificationDTO;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import com.gxc.internalcommon.dto.PassengerUser;
+import com.gxc.internalcommon.dto.ResponseResult;
+import com.gxc.internalcommon.request.VerificationDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 

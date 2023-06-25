@@ -1,8 +1,7 @@
 package com.gxc.serviceprice.controller;
 
-import com.gax.internalcommon.dto.ResponseResult;
-import com.gax.internalcommon.request.ForecastPriceDTO;
-import com.gax.internalcommon.responese.ForecastPriceResponse;
+import com.gxc.internalcommon.dto.ResponseResult;
+import com.gxc.internalcommon.request.ForecastPriceDTO;
 import com.gxc.serviceprice.service.ForecastPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

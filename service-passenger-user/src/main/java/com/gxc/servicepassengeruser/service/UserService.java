@@ -1,8 +1,8 @@
 package com.gxc.servicepassengeruser.service;
 
-import com.gax.internalcommon.constent.CommonStatusEnum;
-import com.gax.internalcommon.dto.ResponseResult;
-import com.gax.internalcommon.dto.PassengerUser;
+import com.gxc.internalcommon.constant.CommonStatusEnum;
+import com.gxc.internalcommon.dto.ResponseResult;
+import com.gxc.internalcommon.dto.PassengerUser;
 import com.gxc.servicepassengeruser.mapper.PassengerUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

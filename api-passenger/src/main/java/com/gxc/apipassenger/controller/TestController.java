@@ -1,6 +1,6 @@
 package com.gxc.apipassenger.controller;
 
-import com.gax.internalcommon.dto.ResponseResult;
+import com.gxc.internalcommon.dto.ResponseResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,14 +1,10 @@
 package com.gxc.apipassenger.interceptor;
 
-import com.auth0.jwt.exceptions.AlgorithmMismatchException;
-import com.auth0.jwt.exceptions.SignatureVerificationException;
-import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.gax.internalcommon.constent.TokenConstants;
-import com.gax.internalcommon.dto.ResponseResult;
-import com.gax.internalcommon.dto.TokenResult;
-import com.gax.internalcommon.util.JwtUtils;
-import com.gax.internalcommon.util.RedisPrefixUtils;
-import io.netty.util.internal.StringUtil;
+import com.gxc.internalcommon.constant.TokenConstants;
+import com.gxc.internalcommon.dto.ResponseResult;
+import com.gxc.internalcommon.dto.TokenResult;
+import com.gxc.internalcommon.util.JwtUtils;
+import com.gxc.internalcommon.util.RedisPrefixUtils;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +14,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
-import java.security.SignatureException;
 
 public class JwtInterceptor implements HandlerInterceptor {
 

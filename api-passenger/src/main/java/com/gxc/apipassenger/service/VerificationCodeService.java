@@ -1,14 +1,14 @@
 package com.gxc.apipassenger.service;
 
-import com.gax.internalcommon.constent.CommonStatusEnum;
-import com.gax.internalcommon.constent.IdentityConstant;
-import com.gax.internalcommon.constent.TokenConstants;
-import com.gax.internalcommon.dto.ResponseResult;
-import com.gax.internalcommon.request.VerificationDTO;
-import com.gax.internalcommon.responese.NumberCodeResponse;
-import com.gax.internalcommon.responese.TokenResponse;
-import com.gax.internalcommon.util.JwtUtils;
-import com.gax.internalcommon.util.RedisPrefixUtils;
+import com.gxc.internalcommon.constant.CommonStatusEnum;
+import com.gxc.internalcommon.constant.IdentityConstant;
+import com.gxc.internalcommon.constant.TokenConstants;
+import com.gxc.internalcommon.dto.ResponseResult;
+import com.gxc.internalcommon.request.VerificationDTO;
+import com.gxc.internalcommon.responese.NumberCodeResponse;
+import com.gxc.internalcommon.responese.TokenResponse;
+import com.gxc.internalcommon.util.JwtUtils;
+import com.gxc.internalcommon.util.RedisPrefixUtils;
 import com.gxc.apipassenger.remoto.ServicePassengerUserClient;
 import com.gxc.apipassenger.remoto.ServiceVerificationClient;
 import org.apache.commons.lang.StringUtils;

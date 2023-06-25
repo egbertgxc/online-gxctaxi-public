@@ -1,13 +1,13 @@
 package com.gxc.apipassenger.service;
 
-import com.gax.internalcommon.constent.CommonStatusEnum;
-import com.gax.internalcommon.constent.IdentityConstant;
-import com.gax.internalcommon.constent.TokenConstants;
-import com.gax.internalcommon.dto.ResponseResult;
-import com.gax.internalcommon.dto.TokenResult;
-import com.gax.internalcommon.responese.TokenResponse;
-import com.gax.internalcommon.util.JwtUtils;
-import com.gax.internalcommon.util.RedisPrefixUtils;
+import com.gxc.internalcommon.constant.CommonStatusEnum;
+import com.gxc.internalcommon.constant.IdentityConstant;
+import com.gxc.internalcommon.constant.TokenConstants;
+import com.gxc.internalcommon.dto.ResponseResult;
+import com.gxc.internalcommon.dto.TokenResult;
+import com.gxc.internalcommon.responese.TokenResponse;
+import com.gxc.internalcommon.util.JwtUtils;
+import com.gxc.internalcommon.util.RedisPrefixUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
