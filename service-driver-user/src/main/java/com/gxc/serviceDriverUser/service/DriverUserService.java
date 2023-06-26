@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.gxc.internalcommon.constant.CommonStatusEnum;
 import com.gxc.internalcommon.constant.DriverCarConstants;
 import com.gxc.internalcommon.dto.*;
-
 import com.gxc.internalcommon.responese.OrderDriverResponse;
 import com.gxc.serviceDriverUser.mapper.CarMapper;
 import com.gxc.serviceDriverUser.mapper.DriverCarBindingRelationshipMapper;
@@ -12,11 +11,7 @@ import com.gxc.serviceDriverUser.mapper.DriverUserMapper;
 import com.gxc.serviceDriverUser.mapper.DriverUserWorkStatusMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.sql.Driver;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;

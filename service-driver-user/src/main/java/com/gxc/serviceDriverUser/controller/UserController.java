@@ -10,11 +10,8 @@ import com.gxc.serviceDriverUser.service.DriverCarBindingRelationshipService;
 import com.gxc.serviceDriverUser.service.DriverUserService;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONObject;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.Driver;
 
 @RestController
 @Slf4j

@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.gxc.internalcommon.constant.CommonStatusEnum;
 import com.gxc.internalcommon.constant.DriverCarConstants;
 import com.gxc.internalcommon.dto.DriverCarBindingRelationship;
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.gxc.internalcommon.dto.DriverUser;
 import com.gxc.internalcommon.dto.ResponseResult;
 import com.gxc.serviceDriverUser.mapper.DriverCarBindingRelationshipMapper;

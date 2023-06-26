@@ -1,13 +1,10 @@
 package com.gxc.serviceDriverUser.controller;
 
-import com.gxc.internalcommon.dto.DriverUser;
 import com.gxc.internalcommon.dto.ResponseResult;
 import com.gxc.serviceDriverUser.mapper.DriverUserMapper;
 import com.gxc.serviceDriverUser.service.DriverUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

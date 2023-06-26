@@ -1,7 +1,7 @@
 package com.gxc.serviceDriverUser.mapper;
 
-import com.gxc.internalcommon.dto.DriverCarBindingRelationship;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.gxc.internalcommon.dto.DriverCarBindingRelationship;
 import org.springframework.stereotype.Repository;
 
 /**
