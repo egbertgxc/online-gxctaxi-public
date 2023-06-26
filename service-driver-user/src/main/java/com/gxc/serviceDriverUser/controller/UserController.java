@@ -59,10 +59,10 @@ public class UserController {
         if (driverUserDb == null){
             ifExists = DriverCarConstants.DRIVER_NOT_EXISTS;
             response.setDriverPhone(driverPhone);
-            response.setIfExists(ifExists);
+            response.setIfExists(DriverCarConstants.DRIVER_NOT_EXISTS);
         }else {
             response.setDriverPhone(driverUserDb.getDriverPhone());
-            response.setIfExists(ifExists);
+            response.setIfExists(DriverCarConstants.DRIVER_EXISTS);
         }
 
         return ResponseResult.success(response);
