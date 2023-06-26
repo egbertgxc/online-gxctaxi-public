@@ -1,7 +1,7 @@
 package com.gxc.apipassenger.service;
 
 import com.gxc.internalcommon.constant.CommonStatusEnum;
-import com.gxc.internalcommon.constant.IdentityConstant;
+import com.gxc.internalcommon.constant.IdentityConstants;
 import com.gxc.internalcommon.constant.TokenConstants;
 import com.gxc.internalcommon.dto.ResponseResult;
 import com.gxc.internalcommon.dto.TokenResult;
@@ -40,7 +40,7 @@ public class TokenService {
         String refreshToken = JwtUtils.generatorToken(phone, identity, TokenConstants.REFRESH_TOKEN_TYPE);
 
         //将token存到redis当中
-        String accessTokenKey = RedisPrefixUtils.generatorTokenKey(phone, IdentityConstant.PASSENGER_IDENTITY,TokenConstants.ACCESS_TOKEN_TYPE);
+        String accessTokenKey = RedisPrefixUtils.generatorTokenKey(phone, IdentityConstants.PASSENGER_IDENTITY,TokenConstants.ACCESS_TOKEN_TYPE);
         stringRedisTemplate.opsForValue().set(accessTokenKey,accessToken,30, TimeUnit.DAYS);
         stringRedisTemplate.opsForValue().set(refreshTokenKey,refreshToken,31,TimeUnit.DAYS);
 

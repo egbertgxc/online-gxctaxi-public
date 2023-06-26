@@ -9,11 +9,11 @@ public class RedisPrefixUtils {
 
     /**
      * 根据手机号生成key
-     * @param PassengerPhone
+     * @param
      * @return
      */
-    public static String generatorKeyByPhone(String PassengerPhone) {
-        return verificationCodePrefix+ PassengerPhone;
+    public static String generatorKeyByPhone(String phone, String identity){
+        return verificationCodePrefix + identity+ "-" + phone;
     }
 
     /**

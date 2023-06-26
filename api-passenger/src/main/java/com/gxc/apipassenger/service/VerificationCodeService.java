@@ -1,7 +1,7 @@
 package com.gxc.apipassenger.service;
 
 import com.gxc.internalcommon.constant.CommonStatusEnum;
-import com.gxc.internalcommon.constant.IdentityConstant;
+import com.gxc.internalcommon.constant.IdentityConstants;
 import com.gxc.internalcommon.constant.TokenConstants;
 import com.gxc.internalcommon.dto.ResponseResult;
 import com.gxc.internalcommon.request.VerificationDTO;
@@ -46,7 +46,7 @@ public class VerificationCodeService {
         System.out.println("生成的key:"+numberCode);
         //存入redis
         //key,value,过期时间
-        String key = RedisPrefixUtils.generatorKeyByPhone(PassengerPhone);
+        String key = RedisPrefixUtils.generatorKeyByPhone(PassengerPhone,IdentityConstants.PASSENGER_IDENTITY);
         stringRedisTemplate.opsForValue().set(key,numberCode+"",2, TimeUnit.MINUTES);
         //通过短效服务商,将对应的验证码发送到手机山,阿里短信,腾讯短信,华信,容量
         return ResponseResult.success("");
@@ -61,7 +61,7 @@ public class VerificationCodeService {
     public ResponseResult checkCode(String passengerPhone, String verificationCode){
         //根据手机号,去redis读取验证码
         //生成key
-        String key = RedisPrefixUtils.generatorKeyByPhone(passengerPhone);
+        String key = RedisPrefixUtils.generatorKeyByPhone(passengerPhone,IdentityConstants.PASSENGER_IDENTITY);
         // 根据key获取验证码
         String codeRedis = stringRedisTemplate.opsForValue().get(key);
         System.out.println("redis中的value:"+codeRedis);
@@ -80,12 +80,12 @@ public class VerificationCodeService {
         //派发令牌
         System.out.println("派发令牌");
         //不应该用魔法值,用常量
-        String accessToken = JwtUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY, TokenConstants.ACCESS_TOKEN_TYPE);
-        String refreshToken = JwtUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY,TokenConstants.REFRESH_TOKEN_TYPE);
+        String accessToken = JwtUtils.generatorToken(passengerPhone, IdentityConstants.PASSENGER_IDENTITY, TokenConstants.ACCESS_TOKEN_TYPE);
+        String refreshToken = JwtUtils.generatorToken(passengerPhone, IdentityConstants.PASSENGER_IDENTITY,TokenConstants.REFRESH_TOKEN_TYPE);
 
         //将token存到redis当中
-        String accessTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone,IdentityConstant.PASSENGER_IDENTITY,TokenConstants.ACCESS_TOKEN_TYPE);
-        String refreshTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone,IdentityConstant.PASSENGER_IDENTITY,TokenConstants.REFRESH_TOKEN_TYPE);
+        String accessTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone, IdentityConstants.PASSENGER_IDENTITY,TokenConstants.ACCESS_TOKEN_TYPE);
+        String refreshTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone, IdentityConstants.PASSENGER_IDENTITY,TokenConstants.REFRESH_TOKEN_TYPE);
         stringRedisTemplate.opsForValue().set(accessTokenKey,accessToken,30,TimeUnit.DAYS);
         stringRedisTemplate.opsForValue().set(refreshTokenKey,refreshToken,31,TimeUnit.DAYS);
 
